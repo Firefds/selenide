@@ -1,6 +1,7 @@
 package com.codeborne.selenide;
 
 import com.codeborne.selenide.impl.CiReportUrl;
+import com.codeborne.selenide.webdriver.BrowserArguments;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.AssertionMode.STRICT;
@@ -41,6 +42,7 @@ public class SelenideConfig implements Config {
   private boolean proxyEnabled = Boolean.parseBoolean(System.getProperty("selenide.proxyEnabled", "false"));
   private String proxyHost = System.getProperty("selenide.proxyHost", "");
   private int proxyPort = Integer.parseInt(System.getProperty("selenide.proxyPort", "0"));
+  private BrowserArguments browserArguments = new BrowserArguments();
 
   @Override
   public String baseUrl() {
@@ -339,6 +341,16 @@ public class SelenideConfig implements Config {
 
   public SelenideConfig browserCapabilities(DesiredCapabilities browserCapabilities) {
     this.browserCapabilities = browserCapabilities;
+    return this;
+  }
+
+  @Override
+  public BrowserArguments browserArguments() {
+    return browserArguments;
+  }
+
+  public SelenideConfig browserArguments(BrowserArguments browserArguments) {
+    this.browserArguments = browserArguments;
     return this;
   }
 

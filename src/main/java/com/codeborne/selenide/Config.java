@@ -1,5 +1,6 @@
 package com.codeborne.selenide;
 
+import com.codeborne.selenide.webdriver.BrowserArguments;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public interface Config {
@@ -14,6 +15,7 @@ public interface Config {
   String browserBinary();
   String pageLoadStrategy();
   DesiredCapabilities browserCapabilities();
+  BrowserArguments browserArguments();
 
   String baseUrl();
   long timeout();

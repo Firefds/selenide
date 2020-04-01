@@ -1,18 +1,15 @@
 package com.codeborne.selenide.impl;
 
-import com.codeborne.selenide.AssertionMode;
-import com.codeborne.selenide.Config;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.FileDownloadMode;
-import com.codeborne.selenide.SelectorMode;
+import com.codeborne.selenide.*;
+import com.codeborne.selenide.webdriver.BrowserArguments;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
  * A non-static facade for static fields in {@link com.codeborne.selenide.Configuration}
- *
+ * <p>
  * It was created only to keep backward compatibility in Selenide 5.0.0: every time when somebody modifies, say,
  * {@link com.codeborne.selenide.Configuration#timeout}, it will immediately reflect in {@link StaticConfig#timeout()}
- *
+ * <p>
  * This class should not be normally used in end user's code.
  */
 public class StaticConfig implements Config {
@@ -164,5 +161,10 @@ public class StaticConfig implements Config {
   @Override
   public DesiredCapabilities browserCapabilities() {
     return Configuration.browserCapabilities;
+  }
+
+  @Override
+  public BrowserArguments browserArguments() {
+    return Configuration.browserArguments;
   }
 }

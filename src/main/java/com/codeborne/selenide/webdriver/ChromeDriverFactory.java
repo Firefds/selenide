@@ -41,6 +41,8 @@ class ChromeDriverFactory extends AbstractDriverFactory {
     }
     options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
     options.addArguments("--proxy-bypass-list=<-loopback>");
+    BrowserArguments browserArguments = config.browserArguments();
+    options.addArguments(browserArguments.toString());
     options.merge(createCommonCapabilities(config, proxy));
     transferChromeOptionsFromSystemProperties(config, options);
     log.debug("Chrome options: {}", options.toString());
@@ -102,6 +104,7 @@ class ChromeDriverFactory extends AbstractDriverFactory {
 
   /**
    * parse parameters which can come from command-line interface
+   *
    * @param csvString comma-separated values, quotes can be used to mask spaces and commas
    *                  Example: 123,"foo bar","bar,foo"
    * @return values as array, quotes are preserved
@@ -113,6 +116,7 @@ class ChromeDriverFactory extends AbstractDriverFactory {
 
   /**
    * Converts String to Boolean\Integer or returns original String.
+   *
    * @param value string to convert
    * @return string's object representation
    */

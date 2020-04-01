@@ -1,5 +1,6 @@
 package com.codeborne.selenide;
 
+import com.codeborne.selenide.webdriver.BrowserArguments;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 /**
@@ -317,4 +318,5 @@ public class Configuration {
    */
   public static String browserBinary = defaults.browserBinary();
 
+  public static BrowserArguments browserArguments = defaults.browserArguments();
 }
